@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: yyzx
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.75.130:3306/db?serverTimezone=Asia/Shanghai
+    username: root
+    password: root
+    hikari:
+      minimum-idle: 8
+      maximum-pool-size: 20
+logging:
+  level:
+    com.neutech.mapper: debug
