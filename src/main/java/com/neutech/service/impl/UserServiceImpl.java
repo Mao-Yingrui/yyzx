@@ -6,7 +6,7 @@ import com.neutech.mapper.UserMapper;
 import com.neutech.service.UserService;
 import org.springframework.stereotype.Service;
 
-@Service
+@Service //配合 @Resource 使用，Spring 会自动识别这个类并注入。
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService {
     @Override
     public boolean updateUserInfo(User user) {

@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.annotation.*;
 import lombok.Data;
 
 
-@Data
+@Data//Lombok 提供的注解，自动生成 getter/setter/toString 等方法。
 @TableName("user")
 public class User {
 
@@ -22,7 +22,7 @@ public class User {
     private String familyPhone;
 
     @TableField("is_in")
-    private Integer isIn;
+    private Integer isIn;//当 Java 属性名和数据库字段名不一样时使用。
 
     private Float balance;
 }
