@@ -3,12 +3,16 @@ spring:
     name: yyzx
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://192.168.75.130:3306/db?serverTimezone=Asia/Shanghai
+    url: jdbc:mysql://localhost:3307/health?useSSL=false&serverTimezone=UTC
     username: root
-    password: root
+    password: 123456
     hikari:
       minimum-idle: 8
       maximum-pool-size: 20
+mybatis-plus:
+  mapper-locations: classpath*:com/neutech/mapper/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 logging:
   level:
     com.neutech.mapper: debug

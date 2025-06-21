@@ -14,7 +14,7 @@
         <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <spring.boot.version>3.1.5</spring.boot.version>
-        <mysql.version>8.0.18</mysql.version>
+        <mysql.version>8.0.33</mysql.version>
         <mybatis-plus.version>3.5.5</mybatis-plus.version>
         <freemarker.version>2.3.32</freemarker.version>
         <lombok>1.18.36</lombok>

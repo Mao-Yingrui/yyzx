@@ -9,14 +9,6 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
-/**
- * <p>
- * 
- * </p>
- *
- * @author Morrien
- * @since 2025-06-21
- */
 @Data
 public class Admin implements Serializable {
 
