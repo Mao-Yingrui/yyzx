@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neutech.mapper.UserMapper">
+    <!-- 根据主键查询用户 -->
+    <select id="selectById" resultType="com.neutech.entity.User">
+        SELECT *
+        FROM user
+        WHERE id_card = #{idCard}
+    </select>
+
+    <!-- 更新用户信息 -->
+    <update id="updateUserCustom">
+        UPDATE user
+        SET name = #{et.name},
+            gender = #{et.gender},
+            password = #{et.password},
+            birth_date = #{et.birthDate},
+            family_phone = #{et.familyPhone},
+            is_in = #{et.isIn}
+        WHERE id_card = #{et.idCard}
+    </update>
+
+    <!-- 查询 is_in 为 1 且在 record 表中不存在记录的用户 -->
+    <select id="selectInUsersNotInRecord" resultType="com.neutech.entity.User">
+        SELECT *
+        FROM user
+        WHERE is_in = 1
+          AND id_card NOT IN (SELECT DISTINCT user_id FROM record)
+    </select>
+</mapper>

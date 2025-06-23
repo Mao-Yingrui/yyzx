@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neutech.mapper.UserAdminMapper">
+    <select id="selectAllUsers" resultType="com.neutech.entity.User">
+        SELECT * FROM user
+    </select>
+
+    <select id="selectUserById" resultType="com.neutech.entity.User">
+        SELECT * FROM user WHERE id_card = #{idCard}
+    </select>
+
+    <insert id="insertUser">
+        INSERT INTO user (
+            id_card, name, gender, password,
+            birth_date, family_phone, is_in, balance
+        ) VALUES (
+            #{et.idCard}, #{et.name}, #{et.gender}, #{et.password},
+            #{et.birthDate}, #{et.familyPhone}, #{et.isIn}, #{et.balance}
+        )
+    </insert>
+
+    <delete id="deleteUserById">
+        DELETE FROM user WHERE id_card = #{idCard}
+    </delete>
+
+    <update id="updateUser">
+        UPDATE user
+        SET name = #{et.name},
+            gender = #{et.gender},
+            password = #{et.password},
+            birth_date = #{et.birthDate},
+            family_phone = #{et.familyPhone},
+            is_in = #{et.isIn},
+            balance = #{et.balance}
+        WHERE id_card = #{et.idCard}
+    </update>
+</mapper>
