@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.neutech.mapper.UserFoodMapper">
+    <insert id="insertOrUpdateUserFood" parameterType="com.neutech.entity.UserFood">
+        INSERT INTO user_food (user_id, breakfast, lunch, dinner, food_date)
+        VALUES (#{userId}, #{breakfast}, #{lunch}, #{dinner}, #{foodDate})
+            ON DUPLICATE KEY UPDATE
+                                 breakfast = VALUES(breakfast),
+                                 lunch = VALUES(lunch),
+                                 dinner = VALUES(dinner)
+    </insert>
+
+    <select id="selectUserFoodByUserIdAndDate" resultType="com.neutech.entity.UserFood">
+        SELECT
+            user_id as userId,
+            breakfast,
+            lunch,
+            dinner,
+            food_date as foodDate
+        FROM
+            user_food
+        WHERE
+            user_id = #{userId} AND food_date = #{foodDate}
+    </select>
+</mapper>

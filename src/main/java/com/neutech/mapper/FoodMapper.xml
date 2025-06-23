@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.neutech.mapper.FoodMapper">
+    <select id="selectFoodByDate" resultType="com.neutech.entity.Food">
+        SELECT
+            food_id as foodId,
+            food_name as foodName,
+            food_type as foodType,
+            food_taste as foodTaste,
+            food_date as foodDate
+        FROM
+            food
+        WHERE
+            food_date = #{foodDate}
+    </select>
+</mapper>

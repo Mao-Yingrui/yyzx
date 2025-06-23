@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.neutech.mapper.HealthFoodMapper">
+    <select id="selectFoodByDate" resultType="com.neutech.entity.Food">
+        SELECT
+            food_id as foodId,
+            food_name as foodName,
+            food_type as foodType,
+            food_taste as foodTaste,
+            food_date as foodDate
+        FROM
+            food
+        WHERE
+            food_date = #{foodDate}
+    </select>
+
+    <insert id="insertFood" parameterType="com.neutech.entity.Food">
+        INSERT INTO food (food_name, food_type, food_taste, food_date)
+        VALUES (#{foodName}, #{foodType}, #{foodTaste}, #{foodDate})
+    </insert>
+
+    <delete id="deleteFoodById" parameterType="java.lang.Integer">
+        DELETE FROM food WHERE food_id = #{foodId}
+    </delete>
+
+    <update id="updateFood" parameterType="com.neutech.entity.Food">
+        UPDATE food
+        SET
+            food_name = #{foodName},
+            food_type = #{foodType},
+            food_taste = #{foodTaste},
+            food_date = #{foodDate}
+        WHERE
+            food_id = #{foodId}
+    </update>
+</mapper>
