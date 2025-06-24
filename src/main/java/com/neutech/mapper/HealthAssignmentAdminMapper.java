@@ -12,4 +12,6 @@ public interface HealthAssignmentAdminMapper extends BaseMapper<HealthAssignment
     int insertAssignment(@Param("et") HealthAssignment assignment);
 
     int deleteAssignmentByIds(@Param("healthHomeId") Integer healthHomeId, @Param("userId") String userId);
+
+    int deleteHealthAssignmentsByUserId(String userId);
 }

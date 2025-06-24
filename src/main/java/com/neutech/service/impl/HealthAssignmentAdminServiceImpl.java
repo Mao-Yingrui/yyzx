@@ -1,5 +1,6 @@
 package com.neutech.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.neutech.entity.HealthAssignment;
 import com.neutech.mapper.HealthAssignmentAdminMapper;
@@ -30,4 +31,11 @@ public class HealthAssignmentAdminServiceImpl extends ServiceImpl<HealthAssignme
     public boolean unassignManager(Integer healthHomeId, String userId) {
         return this.healthAssignmentAdminMapper.deleteAssignmentByIds(healthHomeId, userId) > 0;
     }
+
+    @Override
+    public boolean deleteHealthAssignmentsByUserId(String userId) {
+        int rowsAffected = healthAssignmentAdminMapper.deleteHealthAssignmentsByUserId(userId);
+        return rowsAffected > 0;
+    }
+
 }

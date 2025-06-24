@@ -27,34 +27,34 @@ public class User {
 
     private float balance;
 
-    // 显式添加 getter 方法
-    public String getIdCard() {
-        return idCard;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getGender() {
-        return gender;
-    }
-
-    public LocalDate getBirthDate() {
-        return birthDate;
-    }
-
-    public String getFamilyPhone() {
-        return familyPhone;
-    }
-
-    public String getIsIn() {
-        return isIn;
-    }
-
-    public float getBalance() {
-        return balance;
-    }
+//    // 显式添加 getter 方法
+//    public String getIdCard() {
+//        return idCard;
+//    }
+//
+//    public String getName() {
+//        return name;
+//    }
+//
+//    public String getGender() {
+//        return gender;
+//    }
+//
+//    public LocalDate getBirthDate() {
+//        return birthDate;
+//    }
+//
+//    public String getFamilyPhone() {
+//        return familyPhone;
+//    }
+//
+//    public String getIsIn() {
+//        return isIn;
+//    }
+//
+//    public float getBalance() {
+//        return balance;
+//    }
 
 
 }
