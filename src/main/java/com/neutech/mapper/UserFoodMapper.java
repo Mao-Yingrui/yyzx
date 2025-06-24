@@ -1,16 +1,24 @@
 package com.neutech.mapper;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.neutech.entity.UserFood;
-import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
-@Mapper
-public interface UserFoodMapper {
+/**
+ * <p>
+ * 用户膳食选择管理 Mapper 接口
+ * </p>
+ *
+ * @author Morrien
+ * @since 2025-06-21
+ */
+public interface UserFoodMapper extends BaseMapper<UserFood> {
     /**
      * 插入或更新用户膳食选择
      * @param userFood 用户膳食信息
      * @return 影响的行数
      */
-    int insertOrUpdateUserFood(UserFood userFood);
+    int insertOrUpdateUserFood(@Param("et") UserFood userFood);
 
     /**
      * 根据用户ID和用餐时间查询膳食选择
@@ -18,5 +26,5 @@ public interface UserFoodMapper {
      * @param foodDate 用餐时间
      * @return 用户膳食信息
      */
-    UserFood selectUserFoodByUserIdAndDate(String idCard, String foodDate);
+    UserFood selectUserFoodByUserIdAndDate(@Param("idCard") String idCard, @Param("foodDate") String foodDate);
 }
