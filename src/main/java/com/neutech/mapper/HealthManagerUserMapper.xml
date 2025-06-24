@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neutech.mapper.HealthManagerUserMapper">
+    <select id="selectManagedUserIds" resultType="string">
+        SELECT
+            id_card
+        FROM
+            health_assignment
+        WHERE
+            health_home_id = #{healthHomeId}
+    </select>
+</mapper>
