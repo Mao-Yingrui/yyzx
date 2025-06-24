@@ -6,6 +6,7 @@ import com.neutech.mapper.UserMapper;
 import com.neutech.service.UserService;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -18,13 +19,13 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
     @Override
     public boolean updateUserInfo(
-        String idCard,
-        String name,
-        String gender,
-        String password,
-        String birthDate,
-        String familyPhone,
-        Integer isIn
+            String idCard,
+            String name,
+            String gender,
+            String password,
+            String birthDate,
+            String familyPhone,
+            String isIn
     ) {
         // 查询用户是否存在
         User existingUser = userMapper.selectById(idCard);
@@ -36,7 +37,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         existingUser.setName(name);
         existingUser.setGender(gender);
         existingUser.setPassword(password);
-        existingUser.setBirthDate(birthDate);
+        existingUser.setBirthDate(LocalDate.parse(birthDate)); // 转换为 LocalDate
         existingUser.setFamilyPhone(familyPhone);
         existingUser.setIsIn(isIn);
 

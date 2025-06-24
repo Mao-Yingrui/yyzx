@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neutech.mapper.HealthAssignmentAdminMapper">
+    <select id="selectAllAssignments" resultType="com.neutech.entity.HealthAssignment">
+        SELECT assignment_id, health_home_id, user_id
+        FROM health_assignment
+    </select>
+
+    <insert id="insertAssignment">
+        INSERT INTO health_assignment (
+            health_home_id,
+            user_id
+        ) VALUES (
+            #{et.healthHomeId},
+            #{et.userId}
+        )
+    </insert>
+
+    <delete id="deleteAssignmentByIds">
+        DELETE FROM health_assignment
+        WHERE health_home_id = #{healthHomeId}
+          AND user_id = #{userId}
+    </delete>
+</mapper>

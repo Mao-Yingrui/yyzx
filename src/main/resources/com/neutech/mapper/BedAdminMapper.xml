@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neutech.mapper.BedAdminMapper">
+    <select id="selectFreeBeds" resultType="com.neutech.entity.Bed">
+        SELECT bed_id, location
+        FROM bed
+        WHERE status = '空闲'
+    </select>
+
+    <select id="selectBedById" resultType="com.neutech.entity.Bed">
+        SELECT bed_id, location, status, user_id
+        FROM bed
+        WHERE bed_id = #{bedId}
+    </select>
+
+    <update id="updateBedStatusAndUser">
+        UPDATE bed
+        SET status = '已占满',
+            user_id = #{userId}
+        WHERE bed_id = #{bedId}
+          AND status = '空闲'
+    </update>
+</mapper>

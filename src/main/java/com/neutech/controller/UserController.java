@@ -6,24 +6,26 @@ import com.neutech.vo.ResultJson;
 import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
 @RequestMapping("/user")
 public class UserController {
     @Resource//告诉 Spring 自动注入一个 UserService 的实现类。
-            //Spring 会自动找到 @Service 注解的类并赋值给这个变量。
+    //Spring 会自动找到 @Service 注解的类并赋值给这个变量。
     UserService userService;
 
     @PostMapping("/update") //Post请求接口
     ResultJson updateUserInfo(
-        @RequestParam String idCard,
-        @RequestParam String name,
-        @RequestParam String gender,
-        @RequestParam String password,
-        @RequestParam String birthDate,
-        @RequestParam String familyPhone,
-        @RequestParam Integer isIn
+            @RequestParam String idCard,
+            @RequestParam String name,
+            @RequestParam String gender,
+            @RequestParam String password,
+            @RequestParam String birthDate,
+            @RequestParam String familyPhone,
+            @RequestParam String isIn,
+            @RequestParam float balance
     ) {
         // 构造 User 对象用于后续操作
         User user = new User();
@@ -31,19 +33,20 @@ public class UserController {
         user.setName(name);
         user.setGender(gender);
         user.setPassword(password);
-        user.setBirthDate(birthDate);
+        user.setBirthDate(LocalDate.parse(birthDate)); // 转换为 LocalDate
         user.setFamilyPhone(familyPhone);
         user.setIsIn(isIn);
+        user.setBalance(balance);
 
         // 调用服务层更新用户信息
         boolean isUpdated = userService.updateUserInfo(
-            user.getIdCard(),
-            user.getName(),
-            user.getGender(),
-            user.getPassword(),
-            user.getBirthDate(),
-            user.getFamilyPhone(),
-            user.getIsIn()
+                user.getIdCard(),
+                user.getName(),
+                user.getGender(),
+                user.getPassword(),
+                user.getBirthDate().toString(), // 转换为 String 以适配现有 Service
+                user.getFamilyPhone(),
+                user.getIsIn()
         );
 
         if (isUpdated) {

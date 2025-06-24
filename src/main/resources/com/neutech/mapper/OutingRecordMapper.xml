@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neutech.mapper.OutingRecordMapper">
+    <!-- 用于select getAllApplications和getApprovedOutings查询的列 -->
+    <sql id="BaseColumnList">
+        o.outing_id, o.user_id, u.name, o.outing_time, o.outing_reason, o.destination, o.out_state
+    </sql>
+
+    <!-- 查询所有申请信息 -->
+    <select id="getAllApplications" resultType="com.neutech.entity.OutingRecord">
+        SELECT 
+        <include refid="BaseColumnList"/>
+        FROM outing_record o
+        JOIN user u ON o.user_id = u.id_card
+    </select>
+
+    <!-- 审核用户申请 -->
+    <update id="approveApplication">
+        UPDATE outing_record
+        SET out_state = '已通过'
+        WHERE user_id = #{userId}
+    </update>
+
+    <!-- 查询所有已通过的外出用户信息 -->
+    <select id="getApprovedOutings" resultType="com.neutech.entity.OutingRecord">
+        SELECT 
+        <include refid="BaseColumnList"/>
+        FROM outing_record o
+        JOIN user u ON o.user_id = u.id_card
+        WHERE o.out_state = '已通过'
+    </select>
+
+    <!-- 外出回归登记 -->
+    <update id="registerReturn">
+        UPDATE outing_record
+        SET out_state = '已回归', back_time = NOW()
+        WHERE user_id = #{userId}
+    </update>
+
+    <!-- 修改用户申请信息 -->
+    <update id="updateApplication">
+        UPDATE outing_record
+        SET user_id = #{userId}, 
+            outing_time = #{outingTime}, 
+            outing_reason = #{outingReason}, 
+            destination = #{destination}
+        WHERE user_id = #{userId}
+    </update>
+
+    <!-- 删除用户申请信息 -->
+    <delete id="deleteApplicationById">
+        DELETE FROM outing_record
+        WHERE outing_id = #{outingId}
+    </delete>
+</mapper>

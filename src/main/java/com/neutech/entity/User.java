@@ -3,6 +3,8 @@ package com.neutech.entity;
 import com.baomidou.mybatisplus.annotation.*;
 import lombok.Data;
 
+import java.time.LocalDate;
+
 @Data
 @TableName("user")
 public class User {
@@ -16,14 +18,14 @@ public class User {
 
     private String password;
 
-    private String birthDate;
+    private LocalDate birthDate;
 
     private String familyPhone;
 
     @TableField("is_in")
-    private Integer isIn;
+    private String isIn;
 
-    private Float balance;
+    private float balance;
 
     // 显式添加 getter 方法
     public String getIdCard() {
@@ -38,15 +40,21 @@ public class User {
         return gender;
     }
 
+    public LocalDate getBirthDate() {
+        return birthDate;
+    }
+
     public String getFamilyPhone() {
         return familyPhone;
     }
 
-    public Integer getIsIn() {
+    public String getIsIn() {
         return isIn;
     }
 
-    public Float getBalance() {
+    public float getBalance() {
         return balance;
     }
+
+
 }
