@@ -35,4 +35,14 @@
         WHERE
             id_card = #{et.idCard}
     </update>
+
+    <!-- 更新用户余额 -->
+    <update id="updateUserBalance">
+        UPDATE
+            user
+        SET
+            balance = #{newBalance}
+        WHERE
+            id_card = #{idCard}
+    </update>
 </mapper>

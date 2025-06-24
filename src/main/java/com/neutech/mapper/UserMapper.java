@@ -18,4 +18,12 @@ public interface UserMapper extends BaseMapper<User> {
      * @return 是否成功
      */
     boolean updateUserCustom(@Param("et") User user);
+
+    /**
+     * 更新用户余额
+     * @param idCard 用户身份证号
+     * @param newBalance 新余额
+     * @return 影响的行数
+     */
+    int updateUserBalance(@Param("idCard") String idCard, @Param("newBalance") double newBalance);
 }
