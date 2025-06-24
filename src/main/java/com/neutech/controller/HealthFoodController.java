@@ -95,7 +95,7 @@ public class HealthFoodController {
     /**
      * 健康管家查看膳食日历页面
      * 健康管家传入json格式：
-     * 用户ID（user_id）：int
+     * 用户ID（id_card）：字符串
      * 用餐时间（food_date）：字符串
      * 传出json格式：
      * 早餐（breakfast）：字符串
@@ -103,8 +103,8 @@ public class HealthFoodController {
      * 晚餐（dinner）：字符串
      */
     @GetMapping("/calendar")
-    public ResultJson getHealthFoodCalendar(@RequestParam Integer userId, @RequestParam String foodDate) {
-        UserFood userFood = userFoodService.getUserFoodByUserIdAndDate(userId, foodDate);
+    public ResultJson getHealthFoodCalendar(@RequestParam String idCard, @RequestParam String foodDate) {
+        UserFood userFood = userFoodService.getUserFoodByUserIdAndDate(idCard, foodDate);
         if (userFood != null) {
             FoodCalendarVO response = new FoodCalendarVO(
                     userFood.getBreakfast(),

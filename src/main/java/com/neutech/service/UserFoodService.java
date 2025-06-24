@@ -12,9 +12,9 @@ public interface UserFoodService {
 
     /**
      * 根据用户ID和用餐时间查询膳食选择
-     * @param userId 用户ID
+     * @param idCard 用户ID
      * @param foodDate 用餐时间
      * @return 用户膳食信息
      */
-    UserFood getUserFoodByUserIdAndDate(Integer userId, String foodDate);
+    UserFood getUserFoodByUserIdAndDate(String idCard, String foodDate);
 }

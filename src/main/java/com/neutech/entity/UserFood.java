@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class UserFood {
-    private Integer userId;
+    private String idCard;
     private String breakfast;
     private String lunch;
     private String dinner;

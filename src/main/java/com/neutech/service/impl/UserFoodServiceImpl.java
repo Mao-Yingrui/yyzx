@@ -18,7 +18,7 @@ public class UserFoodServiceImpl implements UserFoodService {
     }
 
     @Override
-    public UserFood getUserFoodByUserIdAndDate(Integer userId, String foodDate) {
-        return userFoodMapper.selectUserFoodByUserIdAndDate(userId, foodDate);
+    public UserFood getUserFoodByUserIdAndDate(String idCard, String foodDate) {
+        return userFoodMapper.selectUserFoodByUserIdAndDate(idCard, foodDate);
     }
 }

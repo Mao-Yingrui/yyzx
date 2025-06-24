@@ -73,8 +73,8 @@ public class UserFoodController {
      * 晚餐（dinner）：字符串
      */
     @GetMapping("/calendar")
-    public ResultJson getFoodCalendar(@RequestParam Integer userId, @RequestParam String foodDate) {
-        UserFood userFood = userFoodService.getUserFoodByUserIdAndDate(userId, foodDate);
+    public ResultJson getFoodCalendar(@RequestParam String idCard, @RequestParam String foodDate) {
+        UserFood userFood = userFoodService.getUserFoodByUserIdAndDate(idCard, foodDate);
         if (userFood != null) {
             FoodCalendarVO response = new FoodCalendarVO(
                     userFood.getBreakfast(),

@@ -2,8 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.neutech.mapper.UserFoodMapper">
     <insert id="insertOrUpdateUserFood" parameterType="com.neutech.entity.UserFood">
-        INSERT INTO user_food (user_id, breakfast, lunch, dinner, food_date)
-        VALUES (#{userId}, #{breakfast}, #{lunch}, #{dinner}, #{foodDate})
+        INSERT INTO user_food (id_card, breakfast, lunch, dinner, food_date)
+        VALUES (#{idCard}, #{breakfast}, #{lunch}, #{dinner}, #{foodDate})
             ON DUPLICATE KEY UPDATE
                                  breakfast = VALUES(breakfast),
                                  lunch = VALUES(lunch),
@@ -12,7 +12,7 @@
 
     <select id="selectUserFoodByUserIdAndDate" resultType="com.neutech.entity.UserFood">
         SELECT
-            user_id as userId,
+            id_card as idCard,
             breakfast,
             lunch,
             dinner,
@@ -20,6 +20,6 @@
         FROM
             user_food
         WHERE
-            user_id = #{userId} AND food_date = #{foodDate}
+            id_card = #{idCard} AND food_date = #{foodDate}
     </select>
 </mapper>
