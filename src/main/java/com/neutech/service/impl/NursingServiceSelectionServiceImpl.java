@@ -47,7 +47,7 @@ public class NursingServiceSelectionServiceImpl implements NursingServiceSelecti
 
             // 更新用户余额
             double newBalance = user.getBalance() - totalPrice;
-            user.setBalance(newBalance);
+            user.setBalance(Float.valueOf((float) newBalance));
             int updateResult = userMapper.updateUserBalance(idCard, newBalance);
             if (updateResult <= 0) {
                 throw new RuntimeException("更新用户余额失败");
@@ -80,7 +80,7 @@ public class NursingServiceSelectionServiceImpl implements NursingServiceSelecti
 
             // 更新用户余额
             double newBalance = user.getBalance() - totalPrice;
-            user.setBalance(newBalance);
+            user.setBalance(Float.valueOf((float) newBalance));
             int updateResult = userMapper.updateUserBalance(idCard, newBalance);
             if (updateResult <= 0) {
                 throw new RuntimeException("更新用户余额失败");
@@ -109,7 +109,7 @@ public class NursingServiceSelectionServiceImpl implements NursingServiceSelecti
 
             // 更新用户余额
             double newBalance = user.getBalance() - totalPrice;
-            user.setBalance(newBalance);
+            user.setBalance(Float.valueOf((float) newBalance));
             int updateResult = userMapper.updateUserBalance(idCard, newBalance);
             if (updateResult <= 0) {
                 throw new RuntimeException("更新用户余额失败");
@@ -138,7 +138,7 @@ public class NursingServiceSelectionServiceImpl implements NursingServiceSelecti
 
             // 更新用户余额
             double newBalance = user.getBalance() - totalPrice;
-            user.setBalance(newBalance);
+            user.setBalance(Float.valueOf((float) newBalance));
             int updateResult = userMapper.updateUserBalance(idCard, newBalance);
             if (updateResult <= 0) {
                 throw new RuntimeException("更新用户余额失败");
@@ -167,7 +167,7 @@ public class NursingServiceSelectionServiceImpl implements NursingServiceSelecti
 
             // 更新用户余额
             double newBalance = user.getBalance() - totalPrice;
-            user.setBalance(newBalance);
+            user.setBalance(Float.valueOf((float) newBalance));
             int updateResult = userMapper.updateUserBalance(idCard, newBalance);
             if (updateResult <= 0) {
                 throw new RuntimeException("更新用户余额失败");
