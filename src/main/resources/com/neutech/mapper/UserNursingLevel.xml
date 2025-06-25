@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.neutech.mapper.UserNursingLevelMapper">
+
+    <!-- 根据用户ID(身份证号)查询护理级别 -->
+    <select id="selectNursingLevelByIdCard" resultType="com.neutech.entity.UserNursingLevel">
+        SELECT
+            id_card AS idCard,
+            nursing_level AS nursingLevel
+        FROM
+            UserNursingLevel
+        WHERE
+            id_card = #{idCard}
+    </select>
+
+    <!-- 更新用户护理级别 -->
+    <update id="updateNursingLevel">
+        UPDATE
+            UserNursingLevel
+        SET
+            nursing_level = #{nursingLevel}
+        WHERE
+            id_card = #{idCard}
+    </update>
+
+</mapper>
